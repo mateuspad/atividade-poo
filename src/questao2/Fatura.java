@@ -7,7 +7,6 @@ public class Fatura {
 	private double preco;
 	
 	public Fatura(String codigo, String descricao, int quantidade, double preco) {
-		super();
 		this.codigo = codigo;
 		this.descricao = descricao;
 		
@@ -15,8 +14,8 @@ public class Fatura {
 			quantidade = 0;
 		}
 		
-		else if(preco < 0.0){
-			preco = 0;
+		else if(preco < 0){
+			preco = 0.0;
 		}
 		
 		this.quantidade = quantidade;
@@ -25,7 +24,7 @@ public class Fatura {
 	public String getCodigo() {
 		return codigo;
 	}
-	public void setCódigo(String codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 	public String getDescricao() {
@@ -51,10 +50,10 @@ public class Fatura {
 	}
 	@Override
 	public String toString() {
-		return "Fatura [Código = " + codigo 
-			+ ", Descrição = " + descricao 
-			+ ", Quantidade = " + quantidade 
-			+ ", Preço = R$" + preco 
+		return "Fatura [CÃ³digo = " + getCodigo() 
+			+ ", DescriÃ§Ã£o = " + getDescricao() 
+			+ ", Quantidade = " + getQuantidade() 
+			+ ", PreÃ§o = R$" + String.format("%.2f",getPreco()) 
 			+ ", Total da Compra = R$" + String.format("%.2f", getTotalFatura()) + "]";
 	}
 }

@@ -1,6 +1,5 @@
 package questao1;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,27 +16,33 @@ public class Cliente {
 		this.CPF = CPF;
 		this.RG = RG;
 	}
-	public Date getNascimento() {
-		return nascimento;
+	public String getNascimento() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+		String strDate = formatter.format(this.nascimento);  
+		return strDate;
 	}
 
 	public void setNascimento(int dia, int mes, int ano) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        Calendar data_atual = Calendar.getInstance();
-        int ano_atual = data_atual.get(Calendar.YEAR);
-        int idade = ano_atual - ano;
-		if(idade > 18) {
+        Calendar dataAtual = Calendar.getInstance();
+        int anoAtual = dataAtual.get(Calendar.YEAR);
+        int idade = anoAtual - ano;
+
+		if(idade >= 18) {
 			String data =  dia + "/" + mes + "/" + ano;
-			System.out.println(formato.parse(data));
+			nascimento = new Date(data);
 		}
-		else {
-			System.out.println("Menores de 18 anos n„o podem ter conta corrente, portanto, o programa ser· encerrado");
+		else if(idade < 18 & idade > 0) {
+			System.out.println("Menores de 18 anos n√£o podem ter conta corrente, portanto, o programa ser√° encerrado");
+			System.exit(0);
+		}
+		else{
+			System.out.println("Erro, Saindo....");
 			System.exit(0);
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", CPF=" + CPF + ", RG=" + RG + ", nascimento=" + nascimento + "]";
+		return "Cliente [nome  = " + nome + ", CPF = " + CPF + ", RG = " + RG + ", Nascimento = " + getNascimento() + "]";
 	}
 }
