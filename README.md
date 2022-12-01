@@ -8,6 +8,7 @@ seguintes métodos:
 
 | Métodos | Descrição | 
 | --- | --- |
+| getDia | Retorna o dia da data | 
 | getMes | Retorna o mês da data | 
 | getMesExtenso | Retorna o mês da data por extenso | 
 | getAno | Retorna o ano da data |
